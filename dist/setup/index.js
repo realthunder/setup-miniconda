@@ -25991,8 +25991,8 @@ const RULES = [
     (i) => !!(i.installerUrl &&
         !constants.KNOWN_EXTENSIONS.includes(urlExt(i.installerUrl))) &&
         `'installer-url' extension '${urlExt(i.installerUrl)}' must be one of: ${constants.KNOWN_EXTENSIONS}`,
-    (i) => !!(!i.minicondaVersion && i.architecture !== "x64") &&
-        `'architecture: ${i.architecture}' requires "miniconda-version"`,
+    (i) => !!(!i.minicondaVersion && !i.miniforgeVersion && i.architecture !== "x64") &&
+        `'architecture: ${i.architecture}' requires "miniconda-version" or "miniforge-version"`,
     (i // Miniconda x86 is only published for Windows lately (last Linux was 2019, last MacOS 2015)
     ) => !!(i.architecture === "x86" && !constants.IS_WINDOWS) &&
         `'architecture: ${i.architecture}' is only available for recent versions on Windows`,
