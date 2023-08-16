@@ -60,7 +60,7 @@ const RULES: IRule[] = [
       constants.KNOWN_EXTENSIONS
     }`,
   (i) =>
-    !!(!i.minicondaVersion && !i.miniforgeVersion && i.architecture !== "x64") &&
+    !!(!i.installerUrl && !i.minicondaVersion && !i.miniforgeVersion && i.architecture !== "x64") &&
     `'architecture: ${i.architecture}' requires "miniconda-version" or "miniforge-version"`,
   (
     i // Miniconda x86 is only published for Windows lately (last Linux was 2019, last MacOS 2015)

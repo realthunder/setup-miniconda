@@ -25406,6 +25406,7 @@ exports.IS_UNIX = exports.IS_MAC || exports.IS_LINUX;
 exports.MINICONDA_BASE_URL = "https://repo.anaconda.com/miniconda/";
 /** Processor architectures supported by Miniconda */
 exports.MINICONDA_ARCHITECTURES = {
+    "64": "x86_64",
     x64: "x86_64",
     x86: "x86",
     ARM64: "aarch64",
@@ -25413,6 +25414,7 @@ exports.MINICONDA_ARCHITECTURES = {
 };
 /** Processor architectures supported by Miniforge */
 exports.MINIFORGE_ARCHITECTURES = {
+    "64": "x86_64",
     x64: "x86_64",
     x86_64: "x86_64",
     aarch64: "aarch64",
@@ -25991,7 +25993,7 @@ const RULES = [
     (i) => !!(i.installerUrl &&
         !constants.KNOWN_EXTENSIONS.includes(urlExt(i.installerUrl))) &&
         `'installer-url' extension '${urlExt(i.installerUrl)}' must be one of: ${constants.KNOWN_EXTENSIONS}`,
-    (i) => !!(!i.minicondaVersion && !i.miniforgeVersion && i.architecture !== "x64") &&
+    (i) => !!(!i.installerUrl && !i.minicondaVersion && !i.miniforgeVersion && i.architecture !== "x64") &&
         `'architecture: ${i.architecture}' requires "miniconda-version" or "miniforge-version"`,
     (i // Miniconda x86 is only published for Windows lately (last Linux was 2019, last MacOS 2015)
     ) => !!(i.architecture === "x86" && !constants.IS_WINDOWS) &&
